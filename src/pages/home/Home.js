@@ -12,6 +12,11 @@ import MenuItem from '@mui/material/MenuItem';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import './Home.css';
 
 const pages = ['Help','Account'];
@@ -51,7 +56,28 @@ const Home = () => {
                         <h1 id="main-text">Cari Cari</h1>
                         <p id="main-p">Live from their sofa to yours. Get closer to your favorite artists, and never miss out.</p>
                     </div>
-                    <div className="element">
+                    <div className="elements">
+                        <Grid container className="container" columnSpacing={1}>
+                            {[0, 1, 2, 3].map((value) => (
+                                <Grid key={value} item xs={3}>
+                                    <div className="element">
+                                        <div className="element1">
+                                            <div className="labelPlusIcon">
+                                                <div className="icon">
+                                                    <FavoriteBorderIcon/>
+                                                </div>
+                                                <div className="count">
+                                                    0
+                                                </div>
+                                                <div className="label">
+                                                    Label{value}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            ))}
+                        </Grid>
                     </div>
                 </Container>
             </div>
@@ -125,9 +151,53 @@ const Home = () => {
                 </HideOnScroll>
             </div>
         </div>
-        <div id="test">
-            <h1 id="main-text">Cari Cari</h1>
-            <h1 id="main-text">Cari Cari</h1>
+        <div id="body">
+            <Container maxWidth="lg">
+                <div className="One">
+                    <div className="header">
+                        <div>
+                            <div className="title">
+                                Upcoming Shows
+                            </div>
+                            <div className="underLine"></div>
+                        </div>
+                        <div className="ViewAll">View All</div>
+                    </div>
+                    <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
+                        {[0, 1, 2, 3].map((value) => (
+                            <Grid key={value} item xs={3}>
+                                <div className="shadow">
+                                    <div className="show">
+                                        <img className="showImg" src={`/images/show${value+1}.png`} alt={`Show${value+1}`} />
+                                        <div className="showLabel">
+                                            Folk
+                                        </div>
+                                        <div className="showStar">
+                                            Benny Dayal
+                                        </div>
+                                        <div className="moreInfo">
+                                            More Info <ArrowForwardIcon/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div className="horiz"></div><ConfirmationNumberIcon/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </Grid>
+                        ))}
+                    </Grid>
+
+                </div>
+                <div className="Reviews">
+                <div className="header">
+                        <div>
+                            <div className="title">
+                                Reviews
+                            </div>
+                            <div className="underLine"></div>
+                        </div>
+                        <div className="ViewAll">View All</div>
+                    </div>
+                </div>
+            </Container>
         </div>
     </div>
   )

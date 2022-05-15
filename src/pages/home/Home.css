@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito&display=swap');
 
 .home{
     background-color: #0A0B1A;
@@ -6,7 +6,7 @@
 
 .home-section1{
     width: 100%;
-    height: 100vh;
+    height: 120vh;
 }
 .home-bg{
     width: 100%;
@@ -22,7 +22,7 @@
     position: absolute;
     display: block;
     width: 100%;
-    height: 100vh;
+    height: 110vh;
     background: linear-gradient(180deg, rgba(5, 11, 20, 0.28) 0%, rgba(1, 13, 32, 0.69) 67.53%, #0A0B1A 85.33%);
     /* z-index: 2; */
 }
@@ -50,20 +50,187 @@
     /* line-height: 6rem; */
 }
 
-.element{
+.elements {
+    width: 85%;
     position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
+    bottom: -3rem;
 }
 
-#test {
+
+.element{
+    width: 267px;
+    height: 267px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    min-width: 600px;
+}
+
+.element1{
+    /* margin: auto; */
+    width: 75%;
+    height: 75%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Nunito';
+}
+
+.labelPlusIcon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+}
+
+.count{
+    font-family: 'Libre Baskerville', serif;
+    line-height: 2rem;
+    font-size: 1.5rem;
+}
+
+.label{
+    opacity: 0.5;
+}
+
+#body {
     width: 100%;
-    height: 500px;
+    height: 942px;
     /* border: 100px solid red; */
 }
 
+.One{
+    height: 480px;
+    /* border: 1px solid red; */
+    color: white;
+}
+
+.Reviews{
+    color: white;
+    height: 348px;
+    margin-top: 100px;
+    /* border: 1px solid red; */
+}
+
+.title{
+    font-family: 'Libre Baskerville', serif;
+    line-height: 2.5rem;
+    font-size: 2rem;
+    padding-bottom: 6px;
+}
+
+.underLine{
+    background: #0259EB;
+    border-radius: 16px;
+    width: 48px;
+    height: 3px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ViewAll{
+    font-family: 'Nunito';
+    line-height: 1.5rem;
+    font-size: 1rem;
+    color: #E5C558;
+    padding: 8px;
+}
+
+.shows{
+    padding-top: 20px;
+    height: 90%;
+    /* border: 1px solid red; */
+}
+
+.shadow{
+    height: 100%;
+    background: linear-gradient(163.41deg, #301A68 0.11%, #234C97 170.69%);
+    border-radius: 8px;
+}
+
+.show{
+    background: #111229;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 8px;
+    left: -8px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+
+}
+
+.showImg{
+
+}
+
+.showLabel{
+    background: #E5C558;
+    border-radius: 1px;
+    padding: 2px 6px;
+    width: 35px;
+    color: #682F26;
+    font-family: 'Nunito';
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px 6px;
+    gap: 10px;
+}
+
+.showStar{
+    font-family: 'Libre Baskerville';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 32px;
+display: flex;
+align-items: center;
+padding: 1rem;
+}
+
+.moreInfo{
+    font-family: 'Nunito';
+font-style: normal;
+font-weight: 600;
+font-size: 16px;
+line-height: 32px;
+/* identical to box height, or 200% */
+
+display: flex;
+align-items: center;
+
+color: #0259EB;
+
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 1rem;
+gap: 8px;
+}
+
+.horiz{
+    height: 32px;
+    width: 1px;
+    background: #FFFFFF;
+    opacity: 0.1;
+}
 @media only screen and (max-width: 600px) {
+
     #main-text {
         font-size: 2.5rem;
         line-height: 3rem;
@@ -75,4 +242,25 @@
         padding-top: 0;
         line-height: 1.5rem;
     }
-  }
+
+    .elements {
+        overflow-x: scroll;
+        position: absolute;
+        bottom: 2rem;
+    }
+
+    .element{
+        width: 164px;
+        height: 164px;
+    }
+
+    .title{
+        font-size: 1.25rem;
+    }
+
+    .ViewAll{
+        padding: 8px 0px;
+    }
+
+
+}
