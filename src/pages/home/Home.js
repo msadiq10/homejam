@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { styled, alpha } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,8 +17,10 @@ import Slide from '@mui/material/Slide';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SearchIcon from '@mui/icons-material/Search';
 import './Home.css';
 
 const pages = ['Help','Account'];
@@ -45,7 +49,55 @@ const Home = () => {
             {children}
           </Slide>
         );
-      }
+    }
+
+    const Search = styled('div')(({ theme }) => ({
+        margin: theme.spacing(2, 0),
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        '&:hover': {
+          backgroundColor: alpha(theme.palette.common.white, 0.25),
+        },
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: theme.spacing(1),
+          width: 'auto',
+        },
+    }));
+
+    const SearchIconWrapper = styled('div')(({ theme }) => ({
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    }));
+      
+    const StyledInputBase = styled(InputBase)(({ theme }) => ({
+        color: 'white',
+        opacity: 1,
+        '& .MuiInputBase-input': {
+            '&::placeholder': {
+                opacity: 1,
+            },
+            padding: theme.spacing(1, 1, 1, 0),
+            // vertical padding + font size from searchIcon
+            paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+            transition: theme.transitions.create('width'),
+            width: '100%',
+            [theme.breakpoints.up('sm')]: {
+            width: '7ch',
+            '&:focus': {
+                width: '20ch',
+                backgroundColor: alpha(theme.palette.common.white, 0.25),
+                borderRadius: theme.shape.borderRadius,
+            },
+            },
+        },
+    }));
   
   return (
     <div className="home">
@@ -89,6 +141,15 @@ const Home = () => {
                                 <Box sx={{ flexGrow: 1}}>
                                     <img src="/images/logo.png" alt="Logo" />
                                 </Box>
+                                <Search>
+                                    <SearchIconWrapper>
+                                    <SearchIcon sx={{color: 'white'}}/>
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                    placeholder="Search"
+                                    inputProps={{ 'aria-label': 'search' }}
+                                    />
+                                </Search>
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                                     {pages.map((page) => (
                                         <Button
@@ -176,7 +237,13 @@ const Home = () => {
                                             Benny Dayal
                                         </div>
                                         <div className="moreInfo">
-                                            More Info <ArrowForwardIcon/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div className="horiz"></div><ConfirmationNumberIcon/>
+                                            <div className="moreInfoText">
+                                                More Info <ArrowForwardIcon/>
+                                            </div>
+                                            <div className="ticket">
+                                                <div className="horiz"></div>
+                                                <ConfirmationNumberOutlinedIcon className="ticketIcon"/>
+                                            </div>
                                         </div>
                                         
                                     </div>
@@ -187,15 +254,54 @@ const Home = () => {
 
                 </div>
                 <div className="Reviews">
-                <div className="header">
+                    <div className="header">
                         <div>
                             <div className="title">
                                 Reviews
                             </div>
                             <div className="underLine"></div>
                         </div>
-                        <div className="ViewAll">View All</div>
+                        <div className="reviewNav">
+                            <div className="reviewPages">
+                                <span className="currentPage">1 </span>
+                                <span className="totalPages">/ 12</span>
+                            </div>
+                            <div className="reviewArrows">
+                                <ArrowBackIcon/>
+                                <ArrowForwardIcon/>
+                            </div>
+                        </div>
                     </div>
+                    <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
+                        {[0, 1, 2].map((value) => (
+                            <Grid key={value} item xs={4}>
+                                <div className="shadowReview">
+                                    <div className="review">
+                                        <div className="marginReview">
+                                            <div className="reviewHeader">
+                                                <img src={`/images/profile${value+1}.png`} alt="Profile" className="reviewImg"></img>
+                                                <div className="reviewFrom">
+                                                    <div className="reviewName">
+                                                        Hellen Jummy
+                                                    </div>
+                                                    <div className="reviewLocation">
+                                                        Palo Alto, CA
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="reviewContent">
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                                Vitae in donec in nisi vitae. Vestibulum pellentesque eget
+                                                laoreet adipiscing. 
+                                            </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Grid>
+                        ))}
+                    </Grid>
                 </div>
             </Container>
         </div>
