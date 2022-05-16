@@ -27,6 +27,58 @@ const pages = ['Help','Account'];
 
 const Home = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
+
+    const shows = [
+        {
+            img: '/images/show1.png',
+            genre: 'Folk',
+            performer: 'Benny Dayal',
+            info: '/',
+            tickets: '/'
+        },
+        {
+            img: '/images/show2.png',
+            genre: 'Bollywood',
+            performer: 'Vijay Yesudas',
+            info: '/',
+            tickets: '/'
+        },
+        {
+            img: '/images/show3.png',
+            genre: 'Folk',
+            performer: 'Andrea Jeremiah',
+            info: '/',
+            tickets: '/'
+        },
+        {
+            img: '/images/show4.png',
+            genre: 'Folk',
+            performer: 'Shilpa Rao',
+            info: '/',
+            tickets: '/'
+        }
+    ]
+
+    const reviews = [
+        {
+            img: '/images/profile1.png',
+            from: 'Hellen Jummy',
+            location: 'Palo Alto, CA',
+            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
+        },
+        {
+            img: '/images/profile2.png',
+            from: 'Isaac Oluwatemilorun',
+            location: 'Palo Alto, CA',
+            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
+        },
+        {
+            img: '/images/profile3.png',
+            from: 'Hellen Jummy',
+            location: 'Palo Alto, CA',
+            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
+        }
+    ]
   
     const handleOpenNavMenu = (event) => {
         console.log(event.currentTarget);
@@ -52,7 +104,6 @@ const Home = () => {
     }
 
     const Search = styled('div')(({ theme }) => ({
-        margin: theme.spacing(2, 0),
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
         '&:hover': {
@@ -68,17 +119,19 @@ const Home = () => {
 
     const SearchIconWrapper = styled('div')(({ theme }) => ({
         padding: theme.spacing(0, 2),
-        height: '100%',
+        height: '105%',
         position: 'absolute',
         pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        [theme.breakpoints.up('lg')]: {
+            height: '100%',
+        },
     }));
       
     const StyledInputBase = styled(InputBase)(({ theme }) => ({
         color: 'white',
-        opacity: 1,
         '& .MuiInputBase-input': {
             '&::placeholder': {
                 opacity: 1,
@@ -87,7 +140,7 @@ const Home = () => {
             // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)})`,
             transition: theme.transitions.create('width'),
-            width: '1ch',
+            width: '0ch',
             '&:focus': {
                 width: '7ch',
                 backgroundColor: alpha(theme.palette.common.white, 0.25),
@@ -97,8 +150,6 @@ const Home = () => {
                 width: '7ch',
                 '&:focus': {
                     width: '20ch',
-                    backgroundColor: alpha(theme.palette.common.white, 0.25),
-                    borderRadius: theme.shape.borderRadius,
                 },
             },
         },
@@ -243,24 +294,26 @@ const Home = () => {
                     </div>
                     <div className="showsContainer">
                         <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
-                            {[0, 1, 2, 3].map((value) => (
-                                <Grid key={value} item xs={3}>
+                            {shows.map((show) => (
+                                <Grid key={show} item xs={3}>
                                     <div className="shadow">
                                         <div className="show">
-                                            <img className="showImg" src={`/images/show${value+1}.png`} alt={`Show${value+1}`} />
+                                            <img className="showImg" src={show.img} alt={show.performer} />
                                             <div className="showLabel">
-                                                Folk
+                                                {show.genre}
                                             </div>
                                             <div className="showStar">
-                                                Benny Dayal
+                                                {show.performer}
                                             </div>
                                             <div className="moreInfo">
-                                                <div className="moreInfoText">
+                                                <a href={show.info} className="moreInfoText">
                                                     More Info <ArrowForwardIcon/>
-                                                </div>
+                                                </a>
                                                 <div className="ticket">
                                                     <div className="horiz"></div>
-                                                    <ConfirmationNumberOutlinedIcon className="ticketIcon"/>
+                                                    <a href={show.tickets} className="ticketIcon">
+                                                        <ConfirmationNumberOutlinedIcon />
+                                                    </a>
                                                 </div>
                                             </div>
                                             
@@ -292,28 +345,24 @@ const Home = () => {
                     </div>
                     <div className="showsContainer">
                         <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
-                            {[0, 1, 2].map((value) => (
-                                <Grid key={value} item xs={4}>
+                            {reviews.map((review) => (
+                                <Grid key={review} item xs={4}>
                                     <div className="shadowReview">
                                         <div className="review">
                                             <div className="marginReview">
                                                 <div className="reviewHeader">
-                                                    <img src={`/images/profile${value+1}.png`} alt="Profile" className="reviewImg"></img>
+                                                    <img src={review.img} alt="User" className="reviewImg"></img>
                                                     <div className="reviewFrom">
                                                         <div className="reviewName">
-                                                            Hellen Jummy
+                                                            {review.from}
                                                         </div>
                                                         <div className="reviewLocation">
-                                                            Palo Alto, CA
+                                                            {review.location}
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="reviewContent">
-                                                <p>
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                                    Vitae in donec in nisi vitae. Vestibulum pellentesque eget
-                                                    laoreet adipiscing. 
-                                                </p>
+                                                    <p>{review.review}</p>
                                                 </div>
                                             </div>
                                         </div>

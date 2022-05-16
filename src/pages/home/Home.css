@@ -212,15 +212,12 @@
 .showLabel{
     background: #E5C558;
     border-radius: 1px;
-    width: 35px;
+    width: max-content;
     color: #682F26;
     font-family: 'Nunito';
     font-weight: 600;
     font-size: 12px;
     line-height: 14px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 2px 6px;
     gap: 10px;
     margin-left: 1rem;
@@ -243,15 +240,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     margin: 1rem;
 }
 
-.moreInfoText:hover{
-    cursor: pointer;
-}
 
 .moreInfoText{
+    text-decoration: none;
     font-family: 'Nunito';
     font-style: normal;
     font-weight: 600;
@@ -260,20 +254,24 @@
 
     color: #0259EB;
     display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px;
-gap: 8px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
 
 
 }
 
+.moreInfoText:hover{
+    cursor: pointer;
+}
+
 .ticket{
     display: flex;
-flex-direction: row;
-align-items: center;
-padding: 0px;
-gap: 16px;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
 
 }
 
@@ -299,7 +297,7 @@ gap: 16px;
 .reviewHeader{
     display: flex;
     justify-content: space-between;
-    width: 55%;
+    width: max-content;
 }
 
 .reviewFrom{
@@ -369,6 +367,54 @@ gap: 16px;
 .totalPages{
     opacity: 0.5;
 }
+
+@media screen and (max-width: 992px) {
+
+    .container{
+        min-width: 600px;
+    }
+
+    .elements {
+        overflow-x: scroll;
+    }
+
+    /* #main-text {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    #main-p{
+        font-size: 1rem;
+        width: 100%;
+        padding-top: 0;
+        line-height: 1.5rem;
+    } */
+
+    .elements {
+        overflow-x: scroll;
+        position: absolute;
+        bottom: 2rem;
+    }
+
+    .showsContainer{
+        overflow-x: scroll;
+    }
+
+    .element{
+        width: 164px;
+        height: 164px;
+    }
+
+    .title{
+        font-size: 1.25rem;
+    }
+
+    .ViewAll{
+        padding: 8px 0px;
+    }
+}
+
+
 @media only screen and (max-width: 600px) {
 
     #main-text {
