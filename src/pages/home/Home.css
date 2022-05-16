@@ -56,6 +56,10 @@
     bottom: -3rem;
 }
 
+.showsContainer{
+    width: 100%;
+}
+
 
 .element{
     width: 267px;
@@ -152,8 +156,16 @@
 }
 
 .shows{
-    padding-top: 20px;
+    padding: 20px 10px;
     height: 90%;
+    min-width: 1190px;
+    /* border: 1px solid red; */
+}
+
+.showsReviews{
+    padding: 20px 10px;
+    height: 90%;
+    min-width: 1200px;
     /* border: 1px solid red; */
 }
 
@@ -375,6 +387,10 @@ gap: 16px;
         overflow-x: scroll;
         position: absolute;
         bottom: 2rem;
+    }
+
+    .showsContainer{
+        overflow-x: scroll;
     }
 
     .element{

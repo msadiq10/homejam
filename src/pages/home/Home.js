@@ -87,14 +87,19 @@ const Home = () => {
             // vertical padding + font size from searchIcon
             paddingLeft: `calc(1em + ${theme.spacing(4)})`,
             transition: theme.transitions.create('width'),
-            width: '100%',
-            [theme.breakpoints.up('sm')]: {
-            width: '7ch',
+            width: '1ch',
             '&:focus': {
-                width: '20ch',
+                width: '7ch',
                 backgroundColor: alpha(theme.palette.common.white, 0.25),
                 borderRadius: theme.shape.borderRadius,
             },
+            [theme.breakpoints.up('lg')]: {
+                width: '7ch',
+                '&:focus': {
+                    width: '20ch',
+                    backgroundColor: alpha(theme.palette.common.white, 0.25),
+                    borderRadius: theme.shape.borderRadius,
+                },
             },
         },
     }));
@@ -141,15 +146,27 @@ const Home = () => {
                                 <Box sx={{ flexGrow: 1}}>
                                     <img src="/images/logo.png" alt="Logo" />
                                 </Box>
-                                <Search>
-                                    <SearchIconWrapper>
-                                    <SearchIcon sx={{color: 'white'}}/>
-                                    </SearchIconWrapper>
-                                    <StyledInputBase
-                                    placeholder="Search"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                    />
-                                </Search>
+                                <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
+                                    <Search>
+                                        <SearchIconWrapper>
+                                        <SearchIcon sx={{color: 'white'}}/>
+                                        </SearchIconWrapper>
+                                        <StyledInputBase
+                                        placeholder="Search"
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                    </Search>
+                                </Box>
+                                <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
+                                    <Search>
+                                        <SearchIconWrapper>
+                                        <SearchIcon sx={{color: 'white'}}/>
+                                        </SearchIconWrapper>
+                                        <StyledInputBase
+                                        inputProps={{ 'aria-label': 'search' }}
+                                        />
+                                    </Search>
+                                </Box>
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                                     {pages.map((page) => (
                                         <Button
@@ -224,34 +241,35 @@ const Home = () => {
                         </div>
                         <div className="ViewAll">View All</div>
                     </div>
-                    <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
-                        {[0, 1, 2, 3].map((value) => (
-                            <Grid key={value} item xs={3}>
-                                <div className="shadow">
-                                    <div className="show">
-                                        <img className="showImg" src={`/images/show${value+1}.png`} alt={`Show${value+1}`} />
-                                        <div className="showLabel">
-                                            Folk
-                                        </div>
-                                        <div className="showStar">
-                                            Benny Dayal
-                                        </div>
-                                        <div className="moreInfo">
-                                            <div className="moreInfoText">
-                                                More Info <ArrowForwardIcon/>
+                    <div className="showsContainer">
+                        <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
+                            {[0, 1, 2, 3].map((value) => (
+                                <Grid key={value} item xs={3}>
+                                    <div className="shadow">
+                                        <div className="show">
+                                            <img className="showImg" src={`/images/show${value+1}.png`} alt={`Show${value+1}`} />
+                                            <div className="showLabel">
+                                                Folk
                                             </div>
-                                            <div className="ticket">
-                                                <div className="horiz"></div>
-                                                <ConfirmationNumberOutlinedIcon className="ticketIcon"/>
+                                            <div className="showStar">
+                                                Benny Dayal
                                             </div>
+                                            <div className="moreInfo">
+                                                <div className="moreInfoText">
+                                                    More Info <ArrowForwardIcon/>
+                                                </div>
+                                                <div className="ticket">
+                                                    <div className="horiz"></div>
+                                                    <ConfirmationNumberOutlinedIcon className="ticketIcon"/>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
-                                        
                                     </div>
-                                </div>
-                            </Grid>
-                        ))}
-                    </Grid>
-
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </div>
                 </div>
                 <div className="Reviews">
                     <div className="header">
@@ -261,7 +279,7 @@ const Home = () => {
                             </div>
                             <div className="underLine"></div>
                         </div>
-                        <div className="reviewNav">
+                        <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }} className="reviewNav">
                             <div className="reviewPages">
                                 <span className="currentPage">1 </span>
                                 <span className="totalPages">/ 12</span>
@@ -270,38 +288,41 @@ const Home = () => {
                                 <ArrowBackIcon/>
                                 <ArrowForwardIcon/>
                             </div>
-                        </div>
+                        </Box>
                     </div>
-                    <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
-                        {[0, 1, 2].map((value) => (
-                            <Grid key={value} item xs={4}>
-                                <div className="shadowReview">
-                                    <div className="review">
-                                        <div className="marginReview">
-                                            <div className="reviewHeader">
-                                                <img src={`/images/profile${value+1}.png`} alt="Profile" className="reviewImg"></img>
-                                                <div className="reviewFrom">
-                                                    <div className="reviewName">
-                                                        Hellen Jummy
-                                                    </div>
-                                                    <div className="reviewLocation">
-                                                        Palo Alto, CA
+                    <div className="showsContainer">
+                        <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
+                            {[0, 1, 2].map((value) => (
+                                <Grid key={value} item xs={4}>
+                                    <div className="shadowReview">
+                                        <div className="review">
+                                            <div className="marginReview">
+                                                <div className="reviewHeader">
+                                                    <img src={`/images/profile${value+1}.png`} alt="Profile" className="reviewImg"></img>
+                                                    <div className="reviewFrom">
+                                                        <div className="reviewName">
+                                                            Hellen Jummy
+                                                        </div>
+                                                        <div className="reviewLocation">
+                                                            Palo Alto, CA
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="reviewContent">
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                                Vitae in donec in nisi vitae. Vestibulum pellentesque eget
-                                                laoreet adipiscing. 
-                                            </p>
+                                                <div className="reviewContent">
+                                                <p>
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                                    Vitae in donec in nisi vitae. Vestibulum pellentesque eget
+                                                    laoreet adipiscing. 
+                                                </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </Grid>
-                        ))}
-                    </Grid>
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </div>
+
                 </div>
             </Container>
         </div>
