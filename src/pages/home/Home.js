@@ -15,7 +15,6 @@ import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ConfirmationNumberOutlinedIcon from '@mui/icons-material/ConfirmationNumberOutlined';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -26,8 +25,10 @@ import './Home.css';
 const pages = ['Help','Account'];
 
 const Home = () => {
+    // Anchor for menu items in the navbar.
     const [anchorElNav, setAnchorElNav] = useState(null);
 
+    // Array containing details of each show.
     const shows = [
         {
             img: '/images/show1.png',
@@ -59,6 +60,7 @@ const Home = () => {
         }
     ]
 
+    // Array containing details of each review.
     const reviews = [
         {
             img: '/images/profile1.png',
@@ -80,15 +82,18 @@ const Home = () => {
         }
     ]
   
+    // Function to show menu items.
     const handleOpenNavMenu = (event) => {
         console.log(event.currentTarget);
       setAnchorElNav(event.currentTarget);
     };
   
+    // Function to close the menu.
     const handleCloseNavMenu = () => {
       setAnchorElNav(null);
     };
 
+    // Hide-on-scroll function for navbar.
     function HideOnScroll(props) {
         const { children, window } = props;
 
@@ -103,6 +108,7 @@ const Home = () => {
         );
     }
 
+    // Custome Responsive Search bar with hover features.
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -117,6 +123,7 @@ const Home = () => {
         },
     }));
 
+    // Custom spacing and position of search icon for different screen devices.
     const SearchIconWrapper = styled('div')(({ theme }) => ({
         padding: theme.spacing(0, 2),
         height: '105%',
@@ -130,6 +137,7 @@ const Home = () => {
         },
     }));
       
+    // Custom input text box with width increase transition.
     const StyledInputBase = styled(InputBase)(({ theme }) => ({
         color: 'white',
         '& .MuiInputBase-input': {
@@ -158,12 +166,14 @@ const Home = () => {
   return (
     <div className="home">
         <div className="home-section1">
+            {/* Creates a gradient overlay on the background */}
             <div id="overlay">
                 <Container maxWidth="lg">
                     <div id="text">
                         <h1 id="main-text">Cari Cari</h1>
                         <p id="main-p">Live from their sofa to yours. Get closer to your favorite artists, and never miss out.</p>
                     </div>
+                    {/* Four counters for likes, events, etc. with labels and icons. */}
                     <div className="elements">
                         <Grid container className="container" columnSpacing={1}>
                             {[0, 1, 2, 3].map((value) => (
@@ -190,13 +200,16 @@ const Home = () => {
                 </Container>
             </div>
             <div className="home-bg">
+                {/* A hide-on-scroll navbar. */}
                 <HideOnScroll>
                     <AppBar color="transparent" elevation={0}>
                         <Container maxWidth="lg">
                             <Toolbar disableGutters>
+                                {/* Logo */}
                                 <Box sx={{ flexGrow: 1}}>
                                     <img src="/images/logo.png" alt="Logo" />
                                 </Box>
+                                {/* Search bar in larger screen devices. */}
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                                     <Search>
                                         <SearchIconWrapper>
@@ -208,6 +221,7 @@ const Home = () => {
                                         />
                                     </Search>
                                 </Box>
+                                {/* Search icon in smaller screen devices. */}
                                 <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                                     <Search>
                                         <SearchIconWrapper>
@@ -218,17 +232,19 @@ const Home = () => {
                                         />
                                     </Search>
                                 </Box>
+                                {/* Other navbar items such as help and account. */}
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
                                     {pages.map((page) => (
                                         <Button
                                             key={page}
-                                            // onClick={handleCloseNavMenu}
+                                            onClick={handleCloseNavMenu}
                                             sx={{my: 2, color: 'white', display: 'block' }}
                                         >
                                             {page}
                                         </Button>
                                     ))}
                                 </Box>
+                                {/* Shop icon. */}
                                 <IconButton
                                     size="large"
                                     aria-label="account of current user"
@@ -238,6 +254,7 @@ const Home = () => {
                                 >
                                     <LocalMallOutlinedIcon/>
                                 </IconButton>
+                                {/* Menu icon for navbar items like help and account in small screen devices. */}
                                 <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
                                     <IconButton
                                         size="large"
@@ -282,6 +299,7 @@ const Home = () => {
         </div>
         <div id="body">
             <Container maxWidth="lg">
+                {/* Upcoming shows */}
                 <div className="One">
                     <div className="header">
                         <div>
@@ -292,6 +310,7 @@ const Home = () => {
                         </div>
                         <div className="ViewAll">View All</div>
                     </div>
+                    {/* Scrollable container for upcoming shows. */}
                     <div className="showsContainer">
                         <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
                             {shows.map((show) => (
@@ -324,6 +343,7 @@ const Home = () => {
                         </Grid>
                     </div>
                 </div>
+                {/* Reviews */}
                 <div className="Reviews">
                     <div className="header">
                         <div>
@@ -343,6 +363,7 @@ const Home = () => {
                             </div>
                         </Box>
                     </div>
+                    {/* Scrollable container for reviews. */}
                     <div className="showsContainer">
                         <Grid container justifyContent="center" spacing={3} className="shows" maxWidth="lg">
                             {reviews.map((review) => (
