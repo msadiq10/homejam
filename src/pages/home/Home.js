@@ -31,28 +31,28 @@ const Home = () => {
     // Array containing details of each show.
     const shows = [
         {
-            img: '/images/show1.png',
+            img: './images/show1.png',
             genre: 'Folk',
             performer: 'Benny Dayal',
             info: '/',
             tickets: '/'
         },
         {
-            img: '/images/show2.png',
+            img: './images/show2.png',
             genre: 'Bollywood',
             performer: 'Vijay Yesudas',
             info: '/',
             tickets: '/'
         },
         {
-            img: '/images/show3.png',
+            img: './images/show3.png',
             genre: 'Folk',
             performer: 'Andrea Jeremiah',
             info: '/',
             tickets: '/'
         },
         {
-            img: '/images/show4.png',
+            img: './images/show4.png',
             genre: 'Folk',
             performer: 'Shilpa Rao',
             info: '/',
@@ -63,19 +63,19 @@ const Home = () => {
     // Array containing details of each review.
     const reviews = [
         {
-            img: '/images/profile1.png',
+            img: './images/profile1.png',
             from: 'Hellen Jummy',
             location: 'Palo Alto, CA',
             review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
         },
         {
-            img: '/images/profile2.png',
+            img: './images/profile2.png',
             from: 'Isaac Oluwatemilorun',
             location: 'Palo Alto, CA',
             review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
         },
         {
-            img: '/images/profile3.png',
+            img: './images/profile3.png',
             from: 'Hellen Jummy',
             location: 'Palo Alto, CA',
             review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae in donec in nisi vitae. Vestibulum pellentesque eget laoreet adipiscing. ',
@@ -207,7 +207,7 @@ const Home = () => {
                             <Toolbar disableGutters>
                                 {/* Logo */}
                                 <Box sx={{ flexGrow: 1}}>
-                                    <img src="/images/logo.png" alt="Logo" />
+                                    <img src={require("./images/logo.png")} fetchpriority="high" alt="Logo" />
                                 </Box>
                                 {/* Search bar in larger screen devices. */}
                                 <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
@@ -317,7 +317,7 @@ const Home = () => {
                                 <Grid key={show} item xs={3}>
                                     <div className="shadow">
                                         <div className="show">
-                                            <img className="showImg" src={show.img} alt={show.performer} />
+                                            <img className="showImg" src={require(`${show.img}`)} alt={show.performer} />
                                             <div className="showLabel">
                                                 {show.genre}
                                             </div>
@@ -372,7 +372,7 @@ const Home = () => {
                                         <div className="review">
                                             <div className="marginReview">
                                                 <div className="reviewHeader">
-                                                    <img src={review.img} alt="User" className="reviewImg"></img>
+                                                    <img src={require(`${review.img}`)} alt="User" className="reviewImg"></img>
                                                     <div className="reviewFrom">
                                                         <div className="reviewName">
                                                             {review.from}
